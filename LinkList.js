@@ -1,3 +1,6 @@
+/**
+ * @description 单项列表节点
+ */
 class Node {
 	/**
 	 * 链表节点
@@ -8,6 +11,19 @@ class Node {
 		this.value = value;
 		this.next = next;
 	};
+}
+
+class BNode extends Node {
+	/**
+	 * 双向链表的节点
+	 * @param { Number | String }value
+	 * @param { BNode }prev
+	 * @param { BNode }next
+	 */
+	constructor(value, prev, next) {
+		super(value, next);
+		this.prev = prev;
+	}
 }
 
 class LinkList {
@@ -114,9 +130,14 @@ class LinkList {
 			}
 			i++;
 		}
-		current.value= value;
+		current.value = value;
 		return this;
 	}
+	/**
+	 * @override
+	 * @description 重写了 toString 方法
+	 * @return {string}
+	 */
 	toString() {
 		const nodeArray = [];
 		let current = this.head;
@@ -128,4 +149,25 @@ class LinkList {
 		}
 		return `当前链表为：${ nodeArray.join('->')}`;
 	}
+}
+
+class LinkListB extends LinkList {
+	/**
+	 *
+	 * @param { BNode } head
+	 */
+	constructor(head) {
+		super(head);
+		this.length = 0;
+	}
+
+	/**
+	 * @override
+	 * @param value
+	 * @param index
+	 */
+	insertNode(value, index) {}
+	removeNode(index) {}
+	queryValue(value) {}
+	replaceNode(value, index) {}
 }
